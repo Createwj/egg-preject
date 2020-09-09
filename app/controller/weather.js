@@ -15,6 +15,8 @@ class WeatherController extends Controller {
     const data = await service.weather.getWeather(location)
     await ctx.render('weather', { data })
   }
+
+
 }
 
 module.exports = WeatherController;

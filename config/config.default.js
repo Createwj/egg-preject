@@ -19,7 +19,7 @@ module.exports = appInfo => {
     csrf: false
   }
 
-  config.view = {
+  config.view = { // 指定渲染试图模板
     mapping: {
       '.html': 'ejs',
     },
