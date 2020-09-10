@@ -3,11 +3,6 @@
 const Controller = require('egg').Controller;
 
 class WeatherController extends Controller {
-  async getWeathers() {
-    const { ctx, service } = this;
-    const data = await service.weather.getWeather('广州')
-    await ctx.render('weather', { data })
-  }
 
   async postWeather() {
     const { ctx, service } = this;
@@ -16,6 +11,24 @@ class WeatherController extends Controller {
     await ctx.render('weather', { data })
   }
 
+  async getWeather() {
+    const { ctx, service } = this;
+    console.log(ctx.request)
+    const data = await service.weather.getWeather('北京')
+    await ctx.render('weather', { data })
+  }
+
+  // api
+  async getApiWeather() {
+    const { ctx, service } = this;
+    const { location } = ctx.query
+    const data = await service.weather.getWeather(location)
+    ctx.set('Content-Type', 'application/json');
+    ctx.body = {
+      data
+    };
+    ctx.status = 201;
+  }
 
 }
 

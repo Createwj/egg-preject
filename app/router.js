@@ -6,8 +6,11 @@
 module.exports = app => {
   const { router, controller } = app;
 
-  // weather
-  router.get('/weathers', controller.weather.getWeathers)
+  // view 服务端渲染
+  router.get('/weather', controller.weather.getWeather)
   router.post('/weather', controller.weather.postWeather)
+
+  // api 调用
+  router.get('/weather', '/api/v2/weather', controller.weather.getApiWeather)
 };
 
