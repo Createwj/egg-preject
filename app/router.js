@@ -11,6 +11,7 @@ module.exports = app => {
   router.post('/weather', controller.weather.postWeather)
 
   // api 调用
-  router.get('/weather', '/api/v2/weather', controller.weather.getApiWeather)
+  router.get('/weather', '/api/v1/weather', controller.weather.getApiWeather)
+  router.get('/getJoke', '/api/v1/getJoke', controller.joke.getJoke)
 };
 
